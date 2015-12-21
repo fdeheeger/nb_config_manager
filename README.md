@@ -1,2 +1,3 @@
 # nb_config_manager
-contains the custom config manager being used to simplify the deployment of continuum notebook extensions
+Package for using an EnvironmentConfigManager able to read not only the user
+config space (config_dir) but also the environment space.

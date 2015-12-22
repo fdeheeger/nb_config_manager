@@ -1,0 +1,21 @@
+package: nb_config_manager
+
+platform:
+  - linux-64
+  - linux-32
+  - osx-64
+  - win-64
+  - win-32
+
+engine:
+  - python=2.7
+  - python=3.4
+  - python=3.5
+
+install:
+  - conda config --add channels anaconda-notebook
+
+script:
+  - conda build --quiet conda.recipe
+
+build_targets: conda

@@ -11,7 +11,7 @@ requirements:
     - python
   run:
     - python
-    - notebook >=4.1
+    - notebook ==4.1.0rc1
 
 source:
   path: ../

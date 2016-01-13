@@ -20,6 +20,10 @@ class EnvironmentConfigManager(ConfigManager):
     user_config_dir = join(jupyter_config_dir(), 'nbconfig')
     environment_config_dir = join(ENV_CONFIG_PATH[0], 'nbconfig')
 
+    def __init__(self, **kwargs):
+        super(EnvironmentConfigManager, self).__init__(**kwargs)
+        self._update_env_config()
+
     def _update_sections(self, section_name):
         """Get info from each section in the user space and port it to the
         environment config file.
@@ -57,7 +61,4 @@ class EnvironmentConfigManager(ConfigManager):
         else:
             default_config_dir = self.user_config_dir
 
-        return default_config_dir
-
-    def _config_dir_default(self):
-        return self._update_env_config()
+        self.config_dir = default_config_dir

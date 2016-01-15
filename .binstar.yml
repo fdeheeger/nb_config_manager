@@ -2,9 +2,9 @@ package: nb_config_manager
 
 platform:
   - linux-64
-  - linux-32
   - osx-64
   - win-64
+  - linux-32
   - win-32
 
 engine:

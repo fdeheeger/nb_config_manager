@@ -7,7 +7,7 @@ from notebook.services.config.manager import ConfigManager
 from jupyter_core.paths import jupyter_config_dir, ENV_CONFIG_PATH
 
 from traitlets import Bool
-
+from tornado.log import app_log as log
 
 class EnvironmentConfigManager(ConfigManager):
     """Config Manager used for storing notebook frontend config
@@ -57,6 +57,8 @@ class EnvironmentConfigManager(ConfigManager):
             if ex.errno == EACCES:
                 # for example, if environment config dir is read-only.
                 # write to user config location instead.
+                log.warn('Environment directory %s not writeable. Saving to user directory %s instead.',
+                         self.environment_config_dir, self.user_config_dir)
                 cfg_user["load_extensions"] = cfg_environment.get("load_extensions")
                 self.config_dir = self.user_config_dir
                 self.update(section_name, cfg_user)
